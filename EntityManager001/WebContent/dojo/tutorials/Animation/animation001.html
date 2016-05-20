@@ -1,0 +1,35 @@
+<html>
+	<body>
+		<h1 id = "greeting"> Hello World </h1>
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true"></script>
+            
+		<button id="startButton">Grow Borders</button>
+		<button id="reverseButton">Shrink Borders</button>
+
+		<div id="anim8target" class="box" style="border-style:outset">
+   		     <div class="innerBox">A box</div>
+		</div>
+		
+		<script>
+		require(["dojo/_base/fx", "dojo/dom", "dojo/on", "dojo/domReady!"], 
+			function(baseFx, dom, on) {
+				var startButton = dom.byId("startButton");
+				var reverseButton = dom.byId("reverseButton");
+				on(startButton, "click", function(evt){
+		   			baseFx.animateProperty({
+		       			node: dom.byId("anim8target"),
+		       			properties: { borderWidth: 100 }
+		   			}).play();
+		   		});
+		   		
+		   		on(reverseButton, "click", function(evt){
+			   		baseFx.animateProperty({
+		       			node: dom.byId("anim8target"),
+		       			properties: { borderWidth: 1 }
+		   			}).play();	   	
+ 		   		});
+		});
+		</script>
+	</body>
+</html>

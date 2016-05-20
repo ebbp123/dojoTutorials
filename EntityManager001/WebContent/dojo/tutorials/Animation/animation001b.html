@@ -1,0 +1,42 @@
+<html>
+	<body>
+		<h1 id = "greeting"> Hello World </h1>
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true"></script>
+            
+		<button id="dropoutButton">Drop-out Block</button>
+		<button id="returnButton">Return Block</button>
+
+		<div id="anim8target" class="box" style="border-style:outset">
+   		     <div class="innerBox">A box</div>
+		</div>
+		
+		<script>
+		require(["dojo/_base/fx", "dojo/dom", "dojo/on", "dojo/domReady!",], 
+				
+				function(baseFx, dom, on) {
+			var dropoutButton = dom.byId("dropoutButton");
+			var returnButton = dom.byId("returnButton");
+			on(dropoutButton, "click", function(evt){
+	   			baseFx.animateProperty({
+	       			node: dom.byId("anim8target"),
+	       			properties: { top: { start: 25, end: 150 },
+	       		        		  left: 0,
+	       		        		  opacity: { start: 1, end: 0 } 
+	       			}
+	   			}).play();
+	   		});
+	   		
+	   		on(returnButton, "click", function(evt){
+		   		baseFx.animateProperty({
+	       			node: dom.byId("anim8target"),
+	       			properties: { top: { start: 150, end: 25 },
+ 		        		 		  left: 0,
+   		        				  opacity: { start: 0, end: 1 }
+	       			}
+	   			}).play();	   	
+		   		});
+		});
+		</script>
+	</body>
+</html>
